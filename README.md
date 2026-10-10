@@ -117,27 +117,9 @@ Then paste the generated `d` into `WORDMARK_PATH` (and fix the viewBox).
 
 Already have product photos? Skip the studio: drop transparent PNG/WebP files in `public/products/` and point `image.src` at them. The studio is never loaded by the showcase, so Three.js stays out of your bundle.
 
-## Email capture (optional)
-
-The demo has a **Get the code** button that posts to `/api/subscribe`. Keys stay on the server.
-
-1. `cp .env.example .env.local`
-2. Set `EMAIL_PROVIDER` to `kit`, `beehiiv` or `webhook` and fill in that provider's keys.
-3. Restart `pnpm dev`.
-
-| Provider | What happens |
-|---|---|
-| `kit` | Creates the subscriber and adds them to `KIT_FORM_ID`. Deliver the link with the form's incentive email or an automation. |
-| `beehiiv` | Creates a subscription with `send_welcome_email: true`. Put the link in your welcome email. |
-| `webhook` | POSTs `{ email, source, subscribedAt }` to `EMAIL_WEBHOOK_URL` (Zapier, Make, your backend…) |
-
-Without a provider the form politely says sign-ups aren't open yet. The route validates emails, has a honeypot field, and rate-limits per IP.
-
-**Instagram DM automation:** point a ManyChat *External Request* at `POST https://your-site/api/subscribe` with JSON body `{"email": "<email field>", "source": "instagram"}`.
-
 ## Deploy
 
-Push to GitHub, import the repo on [Vercel](https://vercel.com/new), add the env vars from `.env.example`, deploy. Everything except `/api/subscribe` is static.
+Push to GitHub, import the repo on [Vercel](https://vercel.com/new), deploy. No environment variables needed; the whole site is static. On Vercel the "Get the code" button links to whichever repo the site was deployed from, so your fork links to itself.
 
 ## Project structure
 
@@ -152,9 +134,7 @@ components/product-showcase/   ← the part you copy
   types.ts
 data/products.ts               ← rebrand here
 app/demo-showcase.tsx          URL controls for the demo
-app/get-code.tsx               "Get the code" email dialog
-app/api/subscribe/route.ts     email capture endpoint
-lib/subscribe.ts               Kit / beehiiv / webhook providers
+app/get-code.tsx               "Get the code" button (links to the repo)
 app/studio/                    bonus 3D can studio (React Three Fiber)
 scripts/                       render-cans.mjs, wordmark.mjs
 ```
