@@ -6,4 +6,4 @@ const slug = process.env.NEXT_PUBLIC_VERCEL_GIT_REPO_SLUG;
 export const REPO_URL =
   owner && slug
     ? `https://github.com/${owner}/${slug}`
-    : "https://github.com/rahuldecode/zuzu-showcase";
+    : "https://github.com/rahuldecode-dev/zuzu-showcase";
