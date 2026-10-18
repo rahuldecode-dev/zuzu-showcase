@@ -6,7 +6,7 @@ A full-screen product carousel with a layered parallax wipe. The background wipe
 
 ![zuzu product showcase demo](docs/demo.gif)
 
-<!-- TODO: live demo link once deployed -->
+**Live demo:** [zuzu-soda.vercel.app](https://zuzu-soda.vercel.app) (swipe or tap the flavours; [`/studio`](https://zuzu-soda.vercel.app/studio) is the 3D can studio)
 
 ## Features
 
